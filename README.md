@@ -1,5 +1,5 @@
 # Ing_EC2
-#Integrantes:
+# Integrantes:
 ## - 
 ## - Mariel Tovar Tolentino
 ## - 
