@@ -1,6 +1,6 @@
 # Ing_EC2
 # Integrantes:
-## - 
-## - Mariel Tovar Tolentino
-## - 
-## - 
+* Noemi Huarino Anchillo
+* Mariel Tovar Tolentino
+* Leonardo Isidro Salazar
+* Ana Accilo Villanueva
