@@ -6,13 +6,9 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('Home.html')
-
-@app.route('/index.html')
-def prueba():
     return render_template('index.html')
 
-@app.route('/index.html/distance',methods=['POST'])
+@app.route('/distance',methods=['POST'])
 def calcular_distancia():
     metodo=request.form['metodo']
     ciudad1=request.form['city1']
