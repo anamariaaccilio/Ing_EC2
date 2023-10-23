@@ -5,7 +5,6 @@ class CSVDataProcessor:
     def get_city_data(self, city_name, country_name):
         pass
 
-# Clase concreta que implementa la interfaz
 class WorldCitiesCSVProcessor(CSVDataProcessor):
     def __init__(self, csv_file):
         self.city_data = self.load_data(csv_file)

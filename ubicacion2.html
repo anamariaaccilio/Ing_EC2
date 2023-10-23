@@ -1,32 +1,89 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calculadora de Distancia entre Ciudades</title>
+    <title>Calculadora de Distancia entre Ciudades con la Forma 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #258cd1;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-    <h1>Calculadora de Distancia entre Ciudades</h1>
+    <h1>Calculadora de Distancia entre Ciudades con la Forma 2</h1>
 
-    <label for="ciudad1">Ciudad 1:</label>
-    <input type="text" id="ciudad1" placeholder="Ingrese la ciudad 1">
-    <br> 
+    <form id="cityForm">
+        <label for="ciudad1">Ciudad 1:</label>
+        <input type="text" id="ciudad1" placeholder="Ingrese la ciudad 1">
+        <br>
 
-    <label for="ciudad2">Ciudad 2:</label>
-    <input type="text" id="ciudad2" placeholder="Ingrese la ciudad 2">
-    <br>
+        <label for="pais1">País 1:</label>
+        <input type="text" id="pais1" placeholder="Ingrese el país 1">
+        <br>
 
-    <button onclick="calcularDistancia()">Calcular Distancia</button>
+        <label for="ciudad2">Ciudad 2:</label>
+        <input type="text" id="ciudad2" placeholder="Ingrese la ciudad 2">
+        <br>
+
+        <label for="pais2">País 2:</label>
+        <input type="text" id="pais2" placeholder="Ingrese el país 2">
+        <br>
+
+        <button type="button" onclick="calcularDistancia_1()">Calcular Distancia</button>
+    </form>
 
     <div id="resultado"></div>
 
-    <script >
-        
+    <script>
         function calcularDistancia_1() {
             var ciudad1 = document.getElementById("ciudad1").value;
+            var pais1 = document.getElementById("pais1").value;
             var ciudad2 = document.getElementById("ciudad2").value;
+            var pais2 = document.getElementById("pais2").value;
 
             // Realizar solicitudes HTTP a la API de Nominatim
-            var url1 = "https://nominatim.openstreetmap.org/search.php?q=" + ciudad1 + "&format=jsonv2";
-            var url2 = "https://nominatim.openstreetmap.org/search.php?q=" + ciudad2 + "&format=jsonv2";
+            var url1 = "https://nominatim.openstreetmap.org/search.php?q=" + ciudad1 + ", " + pais1 + "&format=jsonv2";
+            var url2 = "https://nominatim.openstreetmap.org/search.php?q=" + ciudad2 + ", " + pais2 + "&format=jsonv2";
 
             fetch(url1)
                 .then(response => response.json())
@@ -48,8 +105,7 @@
                             var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
                             var distancia = R * c;
 
-
-                            document.getElementById("resultado").innerHTML = "La distancia entre " + ciudad1 + " y " + ciudad2 + " es: " + distancia.toFixed(2) + " km";
+                            document.getElementById("resultado").innerHTML = "La distancia entre " + ciudad1 + ", " + pais1 + " y " + ciudad2 + ", " + pais2 + " es: " + distancia.toFixed(2) + " km";
                         })
                         .catch(error => console.error(error));
                 })

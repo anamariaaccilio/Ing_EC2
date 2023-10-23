@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: darkblue;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        table, th, td {
+            border: 1px solid lightgray;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: darkgray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Distancia entre Ciudades</h1>
+    <form action="">
+        <label for="city1">Ingrese la Ciudad 1: </label>
+        <input type="text" id="city1" name="city1"><br><br>
+
+        <label for="city2">Ingrese la Ciudad 2: </label>
+        <input type="text" id="city2" name="city2"><br><br>
+
+        <input type="button" value="Calcular Distancia" onclick="calcularDistancia()">
+    </form>
+
+    <h2>Resultados:</h2>
+    <table>
+        <tr>
+            <th>Ciudad 1</th>
+            <th>País 1</th>
+            <th>Ciudad 2</th>
+            <th>País 2</th>
+            <th>Distancia (km)</th>
+        </tr>
+        <tr id="resultRow">
+        </tr>
+    </table>
+
+    <script>
+        function calcularDistancia() {
+            var city1 = document.getElementById("city1").value;
+            var city2 = document.getElementById("city2").value;
+
+            fetch(`/calcular_distancia?city1=${city1}&city2=${city2}`)
+                .then(response => response.json())
+                .then(data => {
+                    var resultRow = document.getElementById("resultRow");
+                    if (data.error) {
+                        resultRow.innerHTML = `<td colspan="5">${data.error}</td>`;
+                    } else {
+                        resultRow.innerHTML = `<td>${data.city1}</td><td>${data.country1}</td><td>${data.city2}</td><td>${data.country2}</td><td>${data.distance}</td>`;
+                    }
+                });
+        }
+    </script>
+</body>
+</html>

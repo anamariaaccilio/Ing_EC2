@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Distancia entre Ciudades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+        }
+
+        form {
+            margin: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #258cd1;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Distancia entre Ciudades</h1>
+
+    <form id="cityForm">
+        <label for="city1">Ciudad 1:</label>
+        <input type="text" id="city1" placeholder="Ingrese el nombre de la ciudad 1">
+        <br>
+
+        <label for="country1">País 1:</label>
+        <input type="text" id="country1" placeholder="Ingrese el nombre del país 1">
+        <br>
+
+        <label for="city2">Ciudad 2:</label>
+        <input type="text" id="city2" placeholder="Ingrese el nombre de la ciudad 2">
+        <br>
+
+        <label for="country2">País 2:</label>
+        <input type="text" id="country2" placeholder="Ingrese el nombre del país 2">
+        <br>
+
+        <button type="submit">Calcular Distancia</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        document.getElementById("cityForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var city1 = document.getElementById("city1").value;
+            var country1 = document.getElementById("country1").value;
+            var city2 = document.getElementById("city2").value;
+            var country2 = document.getElementById("country2").value;
+
+            // Lógica para enviar estos datos al servidor (usando AJAX, por ejemplo) y recibir la distancia calculada
+
+            // Ejemplo de cómo actualizar el resultado en la página
+            var resultado = document.getElementById("resultado");
+            resultado.innerHTML = "Calculando la distancia..."; // Puedes mostrar un mensaje mientras se realiza la consulta
+
+            // Realizar una solicitud AJAX al servidor para calcular la distancia y luego actualizar el resultado en la página
+            // Aquí deberías utilizar JavaScript y una ruta en tu servidor para procesar la solicitud y calcular la distancia.
+
+            // Ejemplo de cómo recibir la distancia y mostrarla en la página
+            setTimeout(function() {
+                var distancia = 123.45; // Reemplaza esto con la distancia real calculada en el servidor
+                resultado.innerHTML = "La distancia entre " + city1 + ", " + country1 + " y " + city2 + ", " + country2 + " es: " + distancia.toFixed(2) + " kilómetros";
+            }, 2000); // Simulación de retraso para mostrar el resultado
+        });
+    </script>
+</body>
+</html>

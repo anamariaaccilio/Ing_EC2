@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculadora de Distancia entre Ciudades</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            background-color: rgb(69, 159, 104);
+            color: white;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #8acf84;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #258cd1;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .result {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        
+        .result h2 {
+            color: #3498db;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .result .location {
+            font-weight: bold;
+            color: #333; 
+        }
+        
+        .result-container .method {
+            font-style: italic;
+            color: #cfcdcd; 
+        }
+        
+        .result .distance {
+            font-size: 18px;
+            color: #3ce79a; /* Color de texto para resaltar la distancia */
+        }
+        
+
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Distancia entre Ciudades</h1>
+    <form method="POST" action="/distance">
+    <label for="ciudad1">Ciudad 1:</label>
+    <input type="text" id="ciudad1" name="city1" placeholder="Ingrese la ciudad 1">
+
+    <label for="pais1">País 1:</label>
+    <input type="text" id="pais1" name="country1" placeholder="Ingrese el país 1">
+
+    <label for="ciudad2">Ciudad 2:</label>
+    <input type="text" id="ciudad2" name="city2" placeholder="Ingrese la ciudad 2">
+    
+    <label for="pais2">País 2:</label>
+    <input type="text" id="pais2" name="country2" placeholder="Ingrese el país 2">
+
+    <label for="metodo">Método de Cálculo:</label>
+    <button name="metodo" value="CSV" type="submit">CSV</button>
+    <button name="metodo" value="API" type="submit">API</button>
+    <button name="metodo" value="MOOK" type="submit">Mock</button>
+
+    <div id="resultado"></div>
+    </form>
+
+    {% if distance is defined %}
+    <div class="result">
+         <h2>Resultado del cálculo de distancia</h2>
+         <p>Distancia entre <span class="location">{{ city1 }}, {{ country1 }}</span> y <span class="location">{{ city2 }}, {{ country2 }}</span> utilizando <span class="method">{{ method }}</span>: <span class="distance">{{ distance }} km</span></p>
+    </div>
+    {% endif %}
+   
+</body>
+</html>
