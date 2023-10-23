@@ -1,62 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Bienvenido a Nuestra pagina!</title>
+    <title>Bienvenido a Nuestra página!</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
+            overflow: hidden; /* Evitar que la barra de desplazamiento aparezca */
         }
 
-        .header {
-            background-color: #156805;
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            flex: 1; /* Esto permite que el logo ocupe todo el espacio disponible a la izquierda del encabezado */
+        .container {
+            position: relative;
         }
 
         .logo {
-            width: 100px;
-            margin-right: 20px;
+            width: 110%; /* La imagen ocupa todo el ancho del contenedor */
+            height: auto; /* La altura se ajusta automáticamente */
+            margin-top: auto; /* Centra verticalmente la imagen */
+            margin-left: -5%;
         }
 
-        .title {
-            font-size: 24px; /* Tamaño del título */
+        .button-container {
+            position: absolute;
+            bottom: 30px; /* Ajusta el botón a 20px desde la parte inferior */
+            left: 50%; /* Centra horizontalmente el botón */
+            transform: translateX(-50%); /* Centra horizontalmente el botón */
         }
 
         button {
-            background-color: #3498db;
+            background-color: #36903a;
             color: white;
-            padding: 10px 20px;
+            padding: 20px 40px;
             border: none;
-            border-radius: 5px;
+            border-radius: 10px;
             cursor: pointer;
         }
 
         button:hover {
-            background-color: #258cd1;
+            background-color: #25622f;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo-container">
-            <img class="logo" src='./Imagen.png' alt="Mi Logo">
-        </div>
-        <h1 class="title">Bienvenido a Nuestra pagina!</h1>
-    </div>
 
-    <button onclick="continuar()">Continuar</button>
+    <div class="container">
+        <img class="logo" src="../static/images/logo.jpg" alt="Mi Logo">
+        <div class="button-container">
+            <button onclick="continuar()">Continuar</button>
+        </div>
+    </div>
 
     <script>
         function continuar() {
