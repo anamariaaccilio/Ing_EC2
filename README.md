@@ -3,7 +3,7 @@
 
 
 # Integrantes:
-* Ana Maria Accilo Villanueva
+* Ana Maria Accilio Villanueva
 * Noemi Alejandro Huarino Anchillo
 * Mariel Carolina Tovar Tolentino
 * Leonardo Daniel Isidro Salazar
