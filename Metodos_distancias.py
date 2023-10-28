@@ -98,7 +98,7 @@ class MOOK_Method(DistanceCalculator):
         coordenada_city1 = city_coordenadas.get((city1, country1), None)
         coordenada_city2 = city_coordenadas.get((city2, country2), None)
 
-        if coordenada_city1 and coordenada_city2:
+        if coordenada_city1 is not None and coordenada_city2 is not None:
             lat1, long1 = coordenada_city1["lat"], coordenada_city1["lng"]
             lat2, long2 = coordenada_city2["lat"], coordenada_city2["lng"]
 
