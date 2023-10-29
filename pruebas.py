@@ -36,13 +36,13 @@ class TestDistanceCalculator3(unittest.TestCase):
     def test_repeated_city_csv(self):
         # Test when both country and citys repeated
 
-        result = DistanceCalculatorFactory.create_distance_calculator("CSV", "Kolkata", "India", "Kolkata", "India")
+        result = DistanceCalculatorFactory.create_distance_calculator("CSV", "Madrid", "Spain", "Madrid", "Spain")
         self.assertEqual(result, "Las ciudades son iguales")
 
     def test_repeated_city_api(self):
         # Test when both country and citys repeated
 
-        result = DistanceCalculatorFactory.create_distance_calculator("API", "Kolkata", "India", "Kolkata", "India")
+        result = DistanceCalculatorFactory.create_distance_calculator("API", "Madrid", "Spain", "Madrid", "Spain")
         self.assertEqual(result, "Las ciudades son iguales")    
 
 
