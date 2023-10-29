@@ -10,48 +10,54 @@ class DistanceCalculator:
 
 class CSV_Method(DistanceCalculator):
     def calculate_distance(city1, country1, city2, country2):
-        data = {}
-        csv_file = 'worldcities.csv'
-        with open(csv_file, 'r', encoding='utf-8') as archivo_csv:
-            lector_csv = csv.DictReader(archivo_csv)
-            for fila in lector_csv:
-                city = fila['city_ascii']
-                country = fila['country']
-                latitude = float(fila['lat'])
-                longitude = float(fila['lng'])
-                data[(city,country)] = (latitude, longitude)
+        try:
+            data = {}
+            csv_file = 'worldcities.csv'
+            with open(csv_file, 'r', encoding='utf-8') as archivo_csv:
+                lector_csv = csv.DictReader(archivo_csv)
+                for fila in lector_csv:
+                    city = fila['city_ascii']
+                    country = fila['country']
+                    latitude = float(fila['lat'])
+                    longitude = float(fila['lng'])
+                    data[(city,country)] = (latitude, longitude)
 
-        location1 = data[(city1,country1)]
-        location2 = data[(city2,country2)]
+            location1 = data[(city1,country1)]
+            location2 = data[(city2,country2)]
 
-        return DistanceCalculator.calculate_distance(location1, location2)               
+            return DistanceCalculator.calculate_distance(location1, location2)
+        except:
+            return "No se encuentra la ciudad en la base de datos"               
 
 class API_Method(DistanceCalculator):
     def calculate_distance(city1, country1, city2, country2):
-        url1="https://nominatim.openstreetmap.org/search.php?q="
-        url2="&format=jsonv2"
+        try:
+            url1="https://nominatim.openstreetmap.org/search.php?q="
+            url2="&format=jsonv2"
 
-        # Realiza la solicitud GET a la API de Nominatim
-        response_1 = requests.get(url1+city1+","+country1+url2)
-        response_2 = requests.get(url1+city2+","+country2+url2)
+            # Realiza la solicitud GET a la API de Nominatim
+            response_1 = requests.get(url1+city1+","+country1+url2)
+            response_2 = requests.get(url1+city2+","+country2+url2)
 
 
-        data1 = response_1.json()
-        data2 = response_2.json()
+            data1 = response_1.json()
+            data2 = response_2.json()
 
-        # Obtiene las coordenadas de la ciudad 1
-        lat1 = float(data1[0]["lat"])
-        lon1 = float(data1[0]["lon"])
+            # Obtiene las coordenadas de la ciudad 1
+            lat1 = float(data1[0]["lat"])
+            lon1 = float(data1[0]["lon"])
 
-        # Obtiene las coordenadas de la ciudad 2
-        lat2 = float(data2[0]["lat"])
-        lon2 = float(data2[0]["lon"])
+            # Obtiene las coordenadas de la ciudad 2
+            lat2 = float(data2[0]["lat"])
+            lon2 = float(data2[0]["lon"])
 
-        # Calcula la distancia entre las dos ciudades
-        coordenadas1 = (lat1, lon1)
-        coordenadas2 = (lat2, lon2)
+            # Calcula la distancia entre las dos ciudades
+            coordenadas1 = (lat1, lon1)
+            coordenadas2 = (lat2, lon2)
 
-        return DistanceCalculator.calculate_distance(coordenadas1, coordenadas2)
+            return DistanceCalculator.calculate_distance(coordenadas1, coordenadas2)
+        except:
+            return "No se encuentra la ciudad en la base de datos"
 
 
 class MOOK_Method(DistanceCalculator):
@@ -115,6 +121,8 @@ class MOOK_Method(DistanceCalculator):
 class DistanceCalculatorFactory:
     @staticmethod
     def create_distance_calculator(method,city1,country1,city2,country2):
+        if (city1 == city2) and (country1 == country2):
+            return "Las ciudades son iguales"
         if method == "CSV":
             return CSV_Method.calculate_distance(city1,country1,city2,country2)
         elif method == "API":
