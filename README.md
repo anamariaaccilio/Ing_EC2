@@ -4,7 +4,7 @@
 
 # Integrantes:
 * Ana Maria Accilio Villanueva
-* Noemi Alejandro Huarino Anchillo
+* Noemi Alejandra Huarino Anchillo
 * Mariel Carolina Tovar Tolentino
 * Leonardo Daniel Isidro Salazar
 
@@ -27,4 +27,8 @@ El programa se encarga de calcular la distancia entre dos ubicaciones (ciudad y 
 ## Uso
 1. Ejecuta la aplicación
     - `python app.py`
+
+## Unit test
+1. Ejecuta el archivo de pruebas
+    - `python pruebas.py`
 
