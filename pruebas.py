@@ -29,6 +29,24 @@ class TestDistanceCalculator2(unittest.TestCase):
         result = DistanceCalculatorFactory.create_distance_calculator("API", "Lima123", "Peru", "Quito", "Ecuador")
         self.assertEqual(result, "No se encuentra la ciudad en la base de datos")
 
+#CASO EXTREMO 2:
+
+class TestDistanceCalculator3(unittest.TestCase):
+
+    def test_repeated_city_csv(self):
+        # Test when both country and citys repeated
+
+        result = DistanceCalculatorFactory.create_distance_calculator("CSV", "Kolkata", "India", "Kolkata", "India")
+        self.assertEqual(result, "Las ciudades son iguales")
+
+    def test_repeated_city_api(self):
+        # Test when both country and citys repeated
+
+        result = DistanceCalculatorFactory.create_distance_calculator("API", "Kolkata", "India", "Kolkata", "India")
+        self.assertEqual(result, "Las ciudades son iguales")    
+
+
+
 if __name__ == '__main__':
     unittest.main()
 
